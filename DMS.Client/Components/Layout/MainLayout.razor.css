@@ -1,0 +1,25 @@
+header {
+    height: 64px;
+}
+
+@media (width >= 1200px) {
+    aside {
+        width: 300px;
+    }
+}
+
+@media (width >= 992px) and ( width < 1200px) {
+    aside {
+        width: 250px;
+    }
+}
+
+@media (width >= 768px) and (width < 992px) {
+    aside {
+        width: 200px;
+    }
+}
+
+@media (width < 768px ) {
+
+}

@@ -1,0 +1,17 @@
+﻿@inherits LayoutComponentBase
+
+<div class="d-flex flex-column flex-md-row h-100 min-vh-100">
+	<aside class="flex-shrink-0 d-flex flex-column border-end">
+		<NavMenu></NavMenu>
+	</aside>
+
+	<div class="d-flex flex-column flex-grow-0 w-100">
+@* 		<header class="d-none d-md-flex flex-shrink-0 header border-bottom flex-row align-items-center px-2">
+
+		</header> *@
+		
+		<main class="d-flex flex-column justify-content-center">
+			@Body
+		</main>
+	</div>
+</div>
