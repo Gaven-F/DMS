@@ -1,3 +1,58 @@
-﻿<h1>EChart</h1>
+﻿@inject ILogger<EChart> Logger
+@inject IJSRuntime JS
 
+<hr />
+<div id="@chartDomId" class="echart-container"></div>
+<hr />
+
+
+<script>
+	// TODO: 需要制作一个全局js文件来处理变量名重复等问题
+	// 初步设想，通过唯一ID来对控件进行注册，然后再通过唯一ID进行渲染等处理
+	if (!echarts) alert("未包含Echarts库，无法展示图表！")
+
+	let chart = null
+	let chartDom = null
+
+	window.ChartInitialized = (domId, option) => {
+		chartDom = document.getElementById(`${domId}`)
+		if (!chartDom) {
+			console.error(`未找到渲染容器！容器id：${domId}`)
+			return
+		}
+		chart = echarts.init(chartDom)
+		chart.setOption(JSON.parse(option))
+		const obs = new ResizeObserver((entries) => {
+			chart.resize()
+		})
+		obs.observe(chartDom)
+	}
+
+</script>
+
+@code {
+	[Parameter]
+	public string Option { get; set; } = $$""""
+	{
+		"xAxis": {
+			"data": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+		},
+		"yAxis": {},
+		"series": [
+			{
+				"type": "bar",
+				"data": [23, 24, 18, 25, 27, 28, 25]
+			}
+		]
+	}
+	"""";
+
+	// TODO: 考虑36进制转换器
+	private string chartDomId = Guid.NewGuid().ToString();
+
+	protected override void OnAfterRender(bool firstRender)
+	{
+		if (firstRender) JS.InvokeVoidAsync("ChartInitialized", chartDomId, Option);
+	}
+}
 
