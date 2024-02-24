@@ -1,5 +1,6 @@
 ﻿html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-family: noto,'等线','Helvetica Neue', Helvetica, Arial, sans-serif;
     padding: 0;
     margin: 0;
     overflow: hidden;
