@@ -2,7 +2,7 @@
 @inject IJSRuntime JS
 
 
-<header class="d-flex align-items-center justify-content-center">
+<header class="d-flex flex-shrink-0 align-items-center justify-content-center">
 	<a class="title link-underline link-underline-opacity-0 text-white" href="">DMS CLIENT</a>
 
 	<button class="menu-btn btn btn-outline-secondary px-4 ms-auto me-0" @onclick="ToggerMenu">
@@ -11,9 +11,9 @@
 </header>
 
 
-<div class="nav @(MenuOpen?"show":null) flex-column gap-2" @onclick="CloseMenu">
+<div class="nav @(MenuOpen?"show":null) flex-column gap-2 pt-2 z-3" @onclick="CloseMenu">
 	<div class="nav-item">
-		<NavLink class="nav-link" href="" Match="NavLinkMatch.All" @onclick="@(e => Logger.LogInformation("Demo"))">
+		<NavLink class="nav-link" href="" Match="NavLinkMatch.All">
 			<span class="bi bi-house-door"></span> 首页
 		</NavLink>
 	</div>
@@ -24,7 +24,10 @@
 		</NavLink>
 	</div>
 
-	<button class="btn btn-info" @onclick="DemoFunc">测试按钮</button>
+	<div class="nav-item nav-link">
+		<button class="btn btn-primary w-100" @onclick="DemoFunc">测试按钮</button>
+	</div>
+
 
 	<div class="nav-item position-absolute bottom-0 mb-2 start-0 end-0 mx-1 danger">
 		<NavLink class="nav-link" href="">
@@ -32,12 +35,6 @@
 		</NavLink>
 	</div>
 </div>
-
-<script>
-	window.Demo = (msg) => {
-		console.log(msg)
-	}
-</script>
 
 @code {
 	private bool MenuOpen { get; set; } = false;
@@ -54,6 +51,5 @@
 
 	private void DemoFunc()
 	{
-		JS.InvokeVoidAsync("Demo", "Demo");
 	}
 }

@@ -22,12 +22,12 @@ header {
     color: #0396ff;
     background-color: #ecf0f188;
     transition-property: border, color, transform;
-    transition-duration: .5s, .5s, .25s;
+    transition-duration: .5s, .5s, .1s;
 }
 
     ::deep .nav-link:hover {
         background-color: #ecf0f1a0;
-        transform: rotate(-2deg);
+        transform: rotate(-3deg);
         color: #0396ff;
     }
 
@@ -50,7 +50,7 @@ header {
 }
 
     ::deep .danger .nav-link:hover {
-        transform: rotate(2deg);
+        transform: rotate(4deg);
     }
 
 @media (width >= 1200px) {
