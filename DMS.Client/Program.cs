@@ -4,15 +4,27 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-builder.RootComponents.Add<DMS.Client.Components.Routes>("#app");
+builder.RootComponents.Add<DMS.Client.Components.App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
-var app = builder.Build();
 
-builder.Services.AddScoped(sp =>
+#region Custom Configuration File
+// TODO: Blazor的配置文件会主动传输到前端，这样不安全，需要进行加密处理
+// 初步设想为混淆加密，即：文件二进制进行混淆后传输到前端
+// 使用C#进行解密而不是js，即使能够读取源文件，也较为困难在web assembly中获取解密函数
+var http = new HttpClient()
 {
-	return new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) };
-});
+	BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
+};
+using var response = await http.GetAsync("CONF");
+using var stream = await response.Content.ReadAsStreamAsync();
+
+builder.Configuration.AddJsonStream(stream);
+#endregion
+
+builder.Services.AddScoped(sp => http);
 
 builder.Services.AddBlazoredLocalStorage();
 
-await builder.Build().RunAsync();
+var app = builder.Build();
+
+await app.RunAsync();
