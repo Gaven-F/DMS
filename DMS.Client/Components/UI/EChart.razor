@@ -25,19 +25,17 @@
 	}
 	"""";
 
-	// TODO: 考虑36进制转换器
 	private string chartDomId = string.Join(string.Empty, Guid.NewGuid().ToByteArray().Select(it => GFUtils.Scale.Scale.Scale62Utils.Value.ToString(it)));
-
-	public void Dispose()
-	{
-		JS.InvokeVoidAsync("EChartDispose", chartDomId);
-	}
 
 	protected override void OnAfterRender(bool firstRender)
 	{
-		if (firstRender) JS.InvokeVoidAsync("EChartInitialized", chartDomId, Option);
+		if (firstRender) JS.InvokeVoidAsync("CHART.Initialized", chartDomId, Option);
 	}
 
+	public void Dispose()
+	{
+		JS.InvokeVoidAsync("CHART.Dispose", chartDomId);
+	}
 
 }
 

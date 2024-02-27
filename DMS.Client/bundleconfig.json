@@ -1,8 +1,8 @@
 [
   {
-    "outputFileName": "wwwroot/js/EChartJsCore.min.js",
+    "outputFileName": "wwwroot/js/ChartJsCore.min.js",
     "inputFiles": [
-      "wwwroot/js/EChartJsCore.js"
+      "wwwroot/js/ChartJsCore.js"
     ]
   },
   {
