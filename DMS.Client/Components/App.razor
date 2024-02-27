@@ -1,1 +1,13 @@
-﻿<Routes></Routes>
+﻿@inject IConfiguration Configuration
+@inject ILogger<App> Logger
+
+@using System.Text.Json
+
+<Routes></Routes>
+
+@code {
+	protected override void OnAfterRender(bool firstRender)
+	{
+		Logger.LogInformation(JsonSerializer.Serialize(Configuration.GetChildren()));
+	}
+}

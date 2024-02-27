@@ -13,3 +13,4 @@ const CSS_FILE_PATH = [
 
 CSS_FILE_PATH.forEach(file => document.write(`<link rel="stylesheet" href="${file}" />`))
 JS_FILE_PATH.forEach(file => document.write(`<script src="${file}"></script>`))
+
