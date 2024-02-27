@@ -4,9 +4,10 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-builder.RootComponents.Add<DMS.Client.Components.Routes>("#app");
+builder.RootComponents.Add<DMS.Client.Components.App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 var app = builder.Build();
+
 
 builder.Services.AddScoped(sp =>
 {

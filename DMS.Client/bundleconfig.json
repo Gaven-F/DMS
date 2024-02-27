@@ -1,0 +1,16 @@
+[
+  {
+    "outputFileName": "wwwroot/js/EChartJsCore.min.js",
+    "inputFiles": [
+      "wwwroot/js/EChartJsCore.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/app.css",
+    "inputFiles": [
+      "wwwroot/css/fonts.css",
+      "wwwroot/css/base.css",
+      "wwwroot/css/blazor-loading.css"
+    ]
+  }
+]
