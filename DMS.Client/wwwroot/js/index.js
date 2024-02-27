@@ -1,7 +1,7 @@
 const JS_FILE_PATH = [
     'lib/echarts/echarts.min.js',
     'lib/bootstrap/js/bootstrap.min.js',
-    'js/EChartJsCore.min.js',
+    'js/ChartJsCore.min.js',
 ]
 
 const CSS_FILE_PATH = [
